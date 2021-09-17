@@ -1,0 +1,24 @@
+name: Platform
+
+on:
+  push:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Azure Policy Compliance Scan
+        uses: Azure/policy-compliance-scan@v0
+        with:
+          # Mandatory. Takes full identifier for one or more azure resources, resource groups or subscriptions. The on-demand policy compliance scan is triggered for all of these. The ID can generally be found in the properties section of the resource in Azure Portal.
+          scopes: /subscriptions/8d2059f3-b805-41fa-ab84-e13d4dfec042/resourceGroups/github-devsecops
+
