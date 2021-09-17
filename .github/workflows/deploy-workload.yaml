@@ -8,8 +8,9 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  dev-deploy:
     runs-on: ubuntu-latest
+    environment: Development
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
